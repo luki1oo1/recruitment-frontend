@@ -1,0 +1,33 @@
+@function color($color-id, $color-tone: 1, $opacity: 1) {
+  @if $color-id == inherit {
+    @return inherit;
+  }
+
+  $tones-map: map-get($colors-stack, $color-id);
+
+  @if $tones-map == null {
+    @error "Color `#{$color-id}` doesn't exist in $colors-stack.";
+  }
+
+  @return if($opacity == 1, nth($tones-map, $color-tone), rgba(nth($tones-map, $color-tone), $opacity));
+}
+
+$colors-stack: (
+  black: (
+    #000000,
+    #0B0D10,
+  ),
+  white: (
+    #ffffff,
+  ),
+  grey: (
+    #151619,
+    #2A2D36,
+  ),
+  orange: (
+    #E78302
+  ),
+    transparent: (
+    #ffffff00
+  ),
+);

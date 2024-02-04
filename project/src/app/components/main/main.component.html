@@ -1,0 +1,52 @@
+<main class="main-container">
+  <div class="main-container__head">
+    <h1 class="main-container__title">Nagłówek H1</h1>
+  </div>
+  <div class="main-container__blocks">
+    <div class="block block--first">
+      <p class="block__description">Blok Pierwszy</p>
+      <label class="block__option">
+        <input type="radio" name="options" class="block__input" [value]="optionFirst" [(ngModel)]="selectedOption">
+        {{ optionFirst }}
+      </label>
+      <label class="block__option">
+        <input type="radio" name="options" class="block__input" [value]="optionSecond" [(ngModel)]="selectedOption">
+        {{ optionSecond }}
+      </label>
+      <label class="block__option">
+        <input type="radio" name="options" class="block__input" [value]="optionThird" [(ngModel)]="selectedOption">
+        {{ optionThird }}
+      </label>
+    </div>
+    <div class="block block--second">
+      <p class="block__description">Blok Drugi</p>
+      <div class="block__btn-container">
+        <button class="block__btn" (click)="onSubmit()">Zastąp</button>
+        <button class="block__btn" (click)="addText()">Doklej</button>
+      </div>
+    </div>
+    <div class="block block--third">
+      <p class="block__description">{{ blockThird.length > 42 ? (blockThird | slice:0:42) + '...' : blockThird }}</p>
+      <div>
+        <ul class="block__list">
+          <li class="block__item" *ngFor="let addedText of addedTexts" [innerHTML]="addedText"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="block__edit-data">
+    <h3>testowa edycja z localStorage tylko na Duzych ekranach :)</h3>
+    <div>
+      <input type="text" [(ngModel)]="newOrEditedData.text" placeholder="Tekst">
+      <button (click)="addData()">Dodaj</button>
+    </div>
+    <ul>
+      <li *ngFor="let data of parsedData; let i = index">
+        {{ data.text }}
+        <button (click)="editData(i)">Edytuj</button>
+        <button (click)="deleteData(i)">Usuń</button>
+      </li>
+    </ul>
+  </div>
+
+</main>

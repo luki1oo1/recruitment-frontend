@@ -1,0 +1,29 @@
+.btn__arrow {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn__arrow::after {
+  content: "";
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  left: 4px;
+  bottom: 2px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(-45deg);
+}
+
+.rotate-btn__arrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+}
